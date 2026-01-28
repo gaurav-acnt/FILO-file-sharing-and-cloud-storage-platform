@@ -13,7 +13,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Pricing from "./pages/Pricing";
 import Chat from "./pages/Chat";
-import Contact from './pages/contact';
+import Contact from './pages/Contact';
 
 import Footer from './components/Footer';
 import BundleView from './pages/BundleView';
