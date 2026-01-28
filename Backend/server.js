@@ -25,7 +25,19 @@ const bundleRoutes = require("./routes/bundleRoutes");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE","OPTIONS"],
+    credentials: true,
+     allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+
 app.use(express.json());
 
 connectDB();
@@ -40,20 +52,10 @@ app.use("/api/user",userRoutes)
 app.use("/api/contact", contactRoutes);
 app.use("/api/bundle", bundleRoutes);
 
+
 app.get("/",(req,res)=>{
     res.send("Filo  backend running...");
 })
-
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://filo-file-sharing-and-cloud-storage.vercel.app"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-  })
-);
 
 const server = http.createServer(app)
 
@@ -61,7 +63,7 @@ const io= new Server(server,{
     cors:{
         origin:[
       "http://localhost:5173",
-      "https://filo-file-sharing-and-cloud-storage.vercel.app"
+    
     ],
         methods:["GET","POST",],
         credentials: true
