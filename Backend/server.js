@@ -44,12 +44,27 @@ app.get("/",(req,res)=>{
     res.send("Filo  backend running...");
 })
 
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://filo-file-sharing-and-cloud-storage.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+  })
+);
+
 const server = http.createServer(app)
 
 const io= new Server(server,{
     cors:{
-        origin:"*",
-        methods:["GET","POST",]
+        origin:[
+      "http://localhost:5173",
+      "https://filo-file-sharing-and-cloud-storage.vercel.app"
+    ],
+        methods:["GET","POST",],
+        credentials: true
     }
 })
 io.use(socketAuth);
