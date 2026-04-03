@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { axiosInstance, authHeader, getToken } from "../services/api";
 import { io } from "socket.io-client";
 
-const SOCKET_URL = import.meta.env.BACKEND_SOCKET_URL;
+const SOCKET_URL = import.meta.env.VITE_BACKEND_SOCKET_URL; 
 
 export default function Chat() {
   const user = useMemo(() => {
